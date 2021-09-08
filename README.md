@@ -1,1 +1,1 @@
-# Bacterial-competitiveness-invulnerability-trade-off-in-marine-system
+# Bacterial competitiveness-invulnerability trade-off in marine system
