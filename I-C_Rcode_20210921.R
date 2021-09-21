@@ -708,26 +708,8 @@ write.csv(MinRA_all, "Smallest_NonRarefied_RA.csv") ##Output smallest relative a
   mtext("Max: 1.2e-01", side=3, at=1620, cex=0.4)
  
   #### Calculate 10% ranking change between T0 and D4 ####
-  #AllTable=read.table("table_ASV.txt", header=T)
-  #AllTable=read.table("NoSingletons_ASVTable.txt",header=T,row.names = 1)
-  
-  #T0=rowMeans(AllTable[,which(sapply(strsplit(colnames(AllTable), "T"), "[", 2)=="0")] )
-  #D4_Table=AllTable[,which(sapply(strsplit(colnames(AllTable), "D"), "[", 3)=="4")] 
-  #T0D4_Table=data.frame(T0,D4_Table)
-  #T0D4_Table=T0D4[rowSums(T0D4_Table)!=0,]
-  
-  
-  #rarefaction
-  #library(phyloseq)
-  #OTU = otu_table(T0D4, taxa_are_rows = TRUE)
-  #rarefied_table=rarefy_even_depth(OTU, sample.size = min(colSums(T0D4_Table)))
-  
-  #D4=rowMeans(rarefied_table[,2:ncol(rarefied_table)])
-  #T0D4=data.frame(rarefied_table[,1],D4)
-  #colnames(T0D4)=c("T0","D4")
-  T0D4=T0D4[rowSums(T0D4)!=0,]
-  
   #Calculate the ranking difference between T0 and T12
+  T0D4=T0D4[rowSums(T0D4)!=0,]
   RankDif=abs(rank(-T0D4$T0)/max(rank(-T0D4$T0))
               -rank(-T0D4$D4)/max(rank(-T0D4$D4)))
   
