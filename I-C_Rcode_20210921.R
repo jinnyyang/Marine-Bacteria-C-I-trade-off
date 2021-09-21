@@ -727,7 +727,7 @@ write.csv(MinRA_all, "Smallest_NonRarefied_RA.csv") ##Output smallest relative a
   #colnames(T0D4)=c("T0","D4")
   T0D4=T0D4[rowSums(T0D4)!=0,]
   
-  #Calculate the ranking differenct between T0 and T12
+  #Calculate the ranking difference between T0 and T12
   RankDif=abs(rank(-T0D4$T0)/max(rank(-T0D4$T0))
               -rank(-T0D4$D4)/max(rank(-T0D4$D4)))
   
