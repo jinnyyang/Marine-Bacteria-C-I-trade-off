@@ -69,13 +69,11 @@ write.csv(MinRA_all, "Smallest_NonRarefied_RA.csv") ##Output smallest relative a
     NonRarefiedTable=read.table(NonRarefiedTable_list[i],header=T,row.names = 1) #Input non-rarefied ASV tables
     NonRarefiedTable_RA=NonRarefiedTable/sum(NonRarefiedTable) #Calculate relative abundance
     
-    FinalRA=matrix(0,nrow(RarefiedTable_RA),ncol(RarefiedTable_RA))
+    FinalRA=RarefiedTable_RA
     for (j in 1:ncol(RarefiedTable_RA)){
       for (k in 1:nrow(RarefiedTable_RA)){
-        # If relative abundance is 0 in rarefied ASV table, replac it with the relative abundance from non-rarefied ASV table
-        if (FinalRA[k,j]!=0){
-          FinalRA[k,j]=RarefiedTable_RA[k,j]
-          }else{
+        # If relative abundance is 0 in rarefied ASV table, replaced it with the relative abundance from non-rarefied ASV table
+        if (FinalRA[k,j]==0){
             FinalRA[k,j]=NonRarefiedTable_RA[which(rownames(NonRarefiedTable_RA)==rownames(RarefiedTable_RA)[k]),j]
           }
         # If relative abundance is still 0 in non-rarefied table, replace it with 0.00000001
